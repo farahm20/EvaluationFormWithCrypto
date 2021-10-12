@@ -14,12 +14,15 @@ const dcryptNames = (encryptedName) => {
     return dcryptedUserName;
 }
 
+
+
 const showUsers = (answers) => {
     {
         answers.map((answer, index) => (
             // console.log(answer.value.FirstName, index)
-            dcryptNames(answer.value.FirstName)
+            console.log(dcryptNames(answer.value.FirstName))
         ))
+
     }
 }
 
@@ -53,12 +56,34 @@ const ShowUserData = () => {
 
     { answers && showUsers(answers) }
 
-
+    /**
+     * show answers
+     * make a new array with decrypted names. 
+     * decrypted name and all answers. 
+     */
 
     return (
         <div>
+            {
+                answers && answers.length > 0 && answers.map((answer, index) => {
+                    return (
+                        <ul key={index}>
+                            <li> ID: {answer.id}</li>
+                            <li> Decrypted Name: {dcryptNames(answer.value.FirstName)}</li>
+                        </ul>
+                    )
 
+                }
+                )
+            }
         </div>
+        // <div>
+        //     {
+        //         answers && answers.length > 0 && answers.map((answer, index) =>
+        //             <p key={index}>Answer: {dcryptNames(answer.value.FirstName)}</p>
+        //         )
+        //     }
+        // </div>
     )
 }
 
